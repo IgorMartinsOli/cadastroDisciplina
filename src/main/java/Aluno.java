@@ -2,7 +2,7 @@ public class Aluno extends Pessoa{
     private int periodo;
     private int ano;
 
-    public Aluno(String nome, int ano, String usuario, String senha) {
+    public Aluno(String nome, int ano, int usuario, String senha) {
         super(nome, usuario, senha);
         this.periodo = periodo = 1;
         this.ano = ano;

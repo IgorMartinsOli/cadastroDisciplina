@@ -8,10 +8,11 @@
  * @author igor_
  */
 public class Disciplina {
+    int id;
     String nome;
     String CH;
     
-    public Disciplina(String nome, String CH){
+    public Disciplina(int id,String nome, String CH){
         this.CH = CH;
         this.nome = nome;
     }
@@ -30,6 +31,15 @@ public class Disciplina {
 
     public void setCH(String CH) {
         this.CH = CH;
+    }
+    
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
 }

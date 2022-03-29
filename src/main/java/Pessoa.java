@@ -8,11 +8,11 @@
  * @author igor_
  */
 abstract class Pessoa {
-    String nome;
-    private String usuario;
-    String senha;
+    private String nome;
+    private int usuario;
+    private String senha;
     
-    public Pessoa(String nome, String usuario, String senha ){
+    public Pessoa(String nome, int usuario, String senha ){
     }
     public String getNome() {
         return nome;
@@ -22,11 +22,11 @@ abstract class Pessoa {
         this.nome = nome;
     }
 
-    public String getUsuario() {
+    public int getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(String usuario) {
+    public void setUsuario(int usuario) {
         this.usuario = usuario;
     }
 

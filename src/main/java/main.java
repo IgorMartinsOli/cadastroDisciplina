@@ -18,10 +18,12 @@ public class main {
      */
     public static void main(String[] args) {
         //login login = new login();
-        ArrayList<Aluno> users = new ArrayList();
+        ArrayList<Aluno> users = new ArrayList<Aluno>();
         Scanner scanner = new Scanner(System.in);
         ArrayList<Disciplina> materias = new ArrayList();
         ArrayList<CadastroDisciplina> cadastros = new ArrayList();
+        int qtContas = 1;
+        int qtMaterias = 1;
         
         
         int opcaoGeral;
@@ -38,15 +40,16 @@ public class main {
                 case 1 -> {
                     String nome;
                     int ano = 2022;
-                    String usuario;
+                    int usuario;
                     String senha;
                     
                     System.out.println("Digite seu nome: ");
                     nome = scanner.next();
-                    System.out.println("Digite seu usuario: ");
-                    usuario = scanner.next();
                     System.out.println("Digite a senha: ");
                     senha = scanner.next();
+                    usuario = qtContas;
+                    qtContas++;
+                    System.out.println("Seu usuario é: "+usuario);
                     
                     Aluno aluno = new Aluno(nome, ano, usuario, senha);
                     users.add(aluno);
@@ -54,25 +57,28 @@ public class main {
                 }
                 
                 case 2 -> {
-                    String usuario;
-                    String senha;
+                    int usuarioAtual;
+                    String senhaAtual;
+                    int auxLogin;
+                   
+                    do{
+                    System.out.println("Digite o usuario: ");
+                    usuarioAtual = scanner.nextInt();
                     
-                    System.out.println("Digite seu usuario: ");
-                    usuario = scanner.next();
-                    System.out.println("Digite sua senha: ");
-                    senha = scanner.next();
+                    System.out.println("Digite a senha: ");
+                    senhaAtual = scanner.next();
                     
-                    for(int i = 0; i < users.size(); i++){
-                        if(usuario.equals(users.get(i).nome) && senha.equals(users.get(i).senha)){
-                            System.out.println("Selecione a materia que deseja matricular");
-                            for(int j = 0; j < materias.size(); j++){
-                                System.out.println(""+j+" - "+materias.get(j).nome);
-                            }
-                            int auxCadastroDisciplica = scanner.nextInt();
-                            CadastroDisciplina cadastro = new CadastroDisciplina(i, auxCadastroDisciplica);
-                            cadastros.add(cadastro);
+                    Aluno auxiliar = users.get(--usuarioAtual);
+                    System.out.println(auxiliar);
+                    System.out.println(auxiliar.getNome());
+                    System.out.println(auxiliar.getPeriodo());
+                    
+                        if(auxiliar.getSenha() == null ? senhaAtual != null : !auxiliar.getSenha().equals(senhaAtual)){
+                            auxLogin = 1;
+                        }else{
+                            auxLogin = 0;
                         }
-                    }
+                    }while(auxLogin == 1);
                     break;
                 }
                 
@@ -82,9 +88,11 @@ public class main {
                     System.out.println("Digite a carga horaria (ex: 00.00): ");
                     String ch = scanner.next();
                     
-                    Disciplina disciplina = new Disciplina(nome, ch);
+                    Disciplina disciplina = new Disciplina(qtMaterias, nome, ch);
                     materias.add(disciplina);
-                    System.out.println("Disciplina cadastrada, retorne ao menu inicial!");
+                    System.out.println("Disciplina cadastrada, id: "+qtMaterias+", retorne ao menu inicial!");
+                    qtMaterias++;
+                    
                 }
             }
         }while(opcaoGeral != 0);
