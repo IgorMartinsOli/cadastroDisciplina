@@ -8,9 +8,9 @@
  * @author igor_
  */
 public class Disciplina {
-    int id;
-    String nome;
-    String CH;
+    private int id;
+    private String nome;
+    private String CH;
     
     public Disciplina(int id,String nome, String CH){
         this.CH = CH;

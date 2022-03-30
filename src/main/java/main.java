@@ -18,12 +18,13 @@ public class main {
      */
     public static void main(String[] args) {
         //login login = new login();
-        ArrayList<Aluno> users = new ArrayList<Aluno>();
+        ArrayList<Aluno> users = new ArrayList();
         Scanner scanner = new Scanner(System.in);
         ArrayList<Disciplina> materias = new ArrayList();
-        ArrayList<CadastroDisciplina> cadastros = new ArrayList();
-        int qtContas = 1;
-        int qtMaterias = 1;
+        ArrayList<CadastroDisciplina> cadastros;
+        cadastros = new ArrayList();
+        int qtContas = 0;
+        int qtMaterias = 0;
         
         
         int opcaoGeral;
@@ -68,16 +69,25 @@ public class main {
                     System.out.println("Digite a senha: ");
                     senhaAtual = scanner.next();
                     
-                    Aluno auxiliar = users.get(--usuarioAtual);
-                    System.out.println(auxiliar);
-                    System.out.println(auxiliar.getNome());
-                    System.out.println(auxiliar.getPeriodo());
+                    Aluno auxiliar = users.get(usuarioAtual);
                     
-                        if(auxiliar.getSenha() == null ? senhaAtual != null : !auxiliar.getSenha().equals(senhaAtual)){
-                            auxLogin = 1;
-                        }else{
-                            auxLogin = 0;
+                    if( !auxiliar.getSenha().equals(senhaAtual) || auxiliar.getUsuario() != usuarioAtual){
+                        System.out.println("Usuario ou senha incorretos ou inexistentes!");
+                        auxLogin = 1;
+                    }else{
+                        System.out.println("Selecione a disciplina que deseja matricular: ");
+                        for(int i = 0; i < materias.size(); i++){
+                            System.out.println(i+" - "+materias.get(i).getNome());
                         }
+                        System.out.println("Digite a materia que deseja: ");
+                        int materiaS = scanner.nextInt();
+                        
+                        CadastroDisciplina newCadastro = new CadastroDisciplina(usuarioAtual, materiaS);
+                        cadastros.add(newCadastro);
+                        
+                        auxLogin = 0;
+                    }
+                    
                     }while(auxLogin == 1);
                     break;
                 }
