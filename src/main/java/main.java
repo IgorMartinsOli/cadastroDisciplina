@@ -71,10 +71,11 @@ public class main {
                     
                     Aluno auxiliar = users.get(usuarioAtual);
                     
-                    if( !auxiliar.getSenha().equals(senhaAtual) || auxiliar.getUsuario() != usuarioAtual){
+                    if(!auxiliar.autentica(senhaAtual)){
                         System.out.println("Usuario ou senha incorretos ou inexistentes!");
                         auxLogin = 1;
                     }else{
+                        auxiliar.boasVindas();
                         System.out.println("Selecione a disciplina que deseja matricular: ");
                         for(int i = 0; i < materias.size(); i++){
                             System.out.println(i+" - "+materias.get(i).getNome());

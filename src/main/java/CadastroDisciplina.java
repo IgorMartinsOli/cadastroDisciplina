@@ -7,7 +7,7 @@
  *
  * @author igor_
  */
-public class CadastroDisciplina {
+public class CadastroDisciplina implements ICadastroDisciplina{
     private int aluno;
     private int disciplina;
     
@@ -31,4 +31,5 @@ public class CadastroDisciplina {
     public void setDisciplina(int disciplina) {
         this.disciplina = disciplina;
     }
+    
 }

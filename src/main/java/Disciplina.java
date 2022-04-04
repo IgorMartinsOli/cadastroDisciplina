@@ -33,7 +33,6 @@ public class Disciplina {
         this.CH = CH;
     }
     
-    
     public int getId() {
         return id;
     }
